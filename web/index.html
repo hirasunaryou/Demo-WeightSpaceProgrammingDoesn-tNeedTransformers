@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="ja" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1b2c">
+<title>Weight-Space Live Lab — Writing Weights, Reading Knowledge</title>
+<link rel="stylesheet" href="/web/styles.css">
+<script src="/web/app.js" defer></script>
+</head>
+<body>
+<div class="shell">
+<header class="topbar">
+  <div class="brand"><span class="brand-icon">W<span>✳</span></span><span><strong>WEIGHT-SPACE <em>LIVE LAB</em></strong><small>WRITE WEIGHTS · READ KNOWLEDGE · QUESTION STRUCTURE</small></span></div>
+  <div class="header-tools">
+    <span class="status" id="status"><i></i>公開モデルを読み込み中</span>
+    <a href="/docs/MANUAL.html" target="_blank" rel="noopener">操作ガイド ↗</a>
+    <a href="https://arxiv.org/abs/2611.22055" target="_blank" rel="noopener">原著論文 ↗</a>
+    <div class="font-controls"><button id="fontDown" title="文字を縮小">A−</button><span id="fontText">100%</span><button id="fontUp" title="文字を拡大">A＋</button></div>
+    <button id="projector" class="header-button" title="勉強会用に表示領域を拡大">発表</button>
+    <button id="theme" class="header-button" title="テーマ切替">☀ ライト</button>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow"><i></i> THE ANATOMY OF WEIGHT-SPACE PROGRAMMING</div>
+    <h1>LLMが、<em>「重み」を書く。</em></h1>
+    <p>勾配降下ではなく、<strong>LLMが書いた知識から連想メモリを構築</strong>する。実際の公開知識行を触り、質問に応じた読み出しを可視化し、1行だけの変更がどう作用するか調べる。</p>
+  </div>
+  <div class="hero-stats">
+    <div><b>54.4%</b><small>著者報告・自由設計の最高ARC正答率</small></div>
+    <div><b>52.4%</b><small>著者報告・提案連想メモリ (Opus)</small></div>
+    <div><b>0</b><small>教材モードでの勾配更新回数</small></div>
+  </div>
+</div>
+<div class="provenance-banner">
+  <span class="original-pill">ORIGINAL / MIT</span>
+  <span>公開された事実行・原著コード・評価数値</span>
+  <span class="banner-sep">≠</span>
+  <span class="demo-pill">LIVE LAB / EDUCATIONAL</span>
+  <span>可視化・軽量スコア計算・行編集の実験</span>
+  <a href="/docs/MANUAL.html#evidence" target="_blank" rel="noopener">違いを確認 ↗</a>
+</div>
+
+<nav class="main-tabs" role="tablist" aria-label="WSP学習モード">
+  <button class="active" id="tabPlay" data-tab="play" aria-selected="true">01　動かして理解</button>
+  <button id="tabSource" data-tab="source" aria-selected="false">02　公開モデルを解剖</button>
+  <button id="tabResearch" data-tab="research" aria-selected="false">03　論文・実験結果</button>
+</nav>
+
+<main>
+<section id="viewPlay" class="workspace">
+  <aside class="panel question-panel">
+    <div class="panel-head"><div><span class="overline">INPUT / SCIENCE MULTIPLE CHOICE</span><h2>4択問題を試す</h2></div><span class="pill">ARC風の教材問題</span></div>
+    <div class="scenario-section"><div class="micro-title">まず試す · 原著の事実行から作った例題</div><div id="scenarioChips" class="scenario-chips"></div></div>
+    <div class="question-editor">
+      <label for="question">QUESTION <span>英語で編集できます</span></label>
+      <textarea id="question" rows="3" maxlength="500" placeholder="Science question…"></textarea>
+      <div class="options-head"><span>CHOICES</span><small>4つの選択肢</small></div>
+      <div id="optionRows" class="option-rows"></div>
+      <button class="primary-button" id="evaluate">▶ 知識を読み出す</button>
+      <p class="input-hint">ここで動くのは原著の知識行を用いた<strong>教育用の簡略化した連想計算</strong>です。原著のPyTorchモデルを実行した結果ではありません。</p>
+    </div>
+    <div class="published-note">
+      <span class="micro-title">ORIGINAL WSP / RELEASED SOURCE</span>
+      <strong>1つの事実行を「編集できる重み」の出発点にする</strong>
+      <p>例：<code>gravity pulls objects &gt; down toward earth center</code></p>
+      <small>元データ：<a href="https://github.com/effl-lab/Weight-Space-Programming" target="_blank" rel="noopener">effl-lab / Weight-Space-Programming</a></small>
+    </div>
+  </aside>
+
+  <section class="panel visualization-panel">
+    <div class="panel-head"><div><span class="overline">PROCESS VIEW / LIVE EXPERIMENT</span><h2>知識が選択肢のスコアになるまで</h2></div><span class="live-pill">● EXPLAINABLE READ</span></div>
+    <div class="stage-row" id="stageButtons">
+      <button data-stage="0" class="active"><b>01</b><span>知識を書く</span></button>
+      <button data-stage="1"><b>02</b><span>概念化</span></button>
+      <button data-stage="2"><b>03</b><span>ペアで読む</span></button>
+      <button data-stage="3"><b>04</b><span>スコア</span></button>
+      <button data-stage="4"><b>05</b><span>1行を変える</span></button>
+    </div>
+    <div class="visual-stage-description"><span class="stage-kicker" id="stageKicker">STAGE 01 / KNOWLEDGE LINES</span><h3 id="stageTitle">書かれた知識が重みの材料になる</h3><p id="stageDescription">原著の公開モデルから実際の知識行を読み込みます。LLMが書いた事実が、勾配更新を使わずに連想関係へコンパイルされます。</p></div>
+    <div class="diagram-viewport">
+      <svg id="diagram" viewBox="0 0 920 410" role="img" aria-label="原著知識行から概念ペア読み出しと選択肢スコアへの流れをアニメーション表示">
+        <defs>
+          <linearGradient id="flowGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#74e3d0"/><stop offset="100%" stop-color="#bc9cf5"/></linearGradient>
+          <marker id="arrowFlow" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto"><path d="M0 0 L8 3 L0 6Z" fill="#7bb7b6"/></marker>
+        </defs>
+        <g id="diagramEdges"></g><g id="diagramNodes"></g>
+      </svg>
+      <div class="diagram-legend"><span><i class="edge-original"></i>原著の知識行</span><span><i class="edge-demo"></i>教材計算</span><span><i class="edge-active"></i>現在の段階</span></div>
+    </div>
+    <div class="transport">
+      <div class="transport-meta"><span id="transportPosition">1 / 5</span><span id="transportHint">スライダーを動かして処理を追う</span></div>
+      <input id="stageSeek" type="range" min="0" max="4" step="1" value="0" aria-label="知識から回答までの処理段階を移動">
+      <div class="transport-actions">
+        <button id="stageFirst" aria-label="最初へ">|◀</button>
+        <button id="stagePrevious" aria-label="前の段階へ">◀</button>
+        <button id="stagePlay" class="play-button" aria-label="再生">▶ 再生</button>
+        <button id="stageNext" aria-label="次の段階へ">▶</button>
+        <button id="stageLast" aria-label="最後へ">▶|</button>
+        <button id="stageSpeed">×1</button>
+        <span class="transport-help">自動再生 / 一時停止 / 任意位置へジャンプ</span>
+      </div>
+    </div>
+    <div class="score-section">
+      <div class="score-head"><div><span class="overline">OPTION SCORES · EDUCATIONAL ANALOGUE</span><h3>選択肢への証拠</h3></div><span id="answerStatus" class="score-status">未計算</span></div>
+      <div id="scoreBars" class="score-bars"><div class="score-placeholder">左の問題を選んで「知識を読み出す」を押してください。</div></div>
+      <p class="score-caption">スコアは独自の学習用近似計算です。確率ではなく、原著の正答率とも比較できません。</p>
+    </div>
+  </section>
+
+  <aside class="panel inspector-panel">
+    <div class="panel-head"><div><span class="overline">INSPECT / CHANGE ONE ROW</span><h2>証拠を見て、書き換える</h2></div><span id="rowCount" class="pill">0 ROWS</span></div>
+    <div class="inspector-scroll">
+      <section class="inspector-section">
+        <div class="micro-title">今回の回答に寄与した知識行</div>
+        <div id="evidenceRows" class="evidence-list"><p class="placeholder">計算すると、選択肢のスコアに関与した原著の知識行を表示します。</p></div>
+        <p class="side-hint">チェックを外すと、その1行を<strong>教育用メモリだけ</strong>から除外します。原著モデルや保存ファイルは一切変更しません。</p>
+      </section>
+      <section class="inspector-section">
+        <div class="micro-title">自由に知識行を探す</div>
+        <div class="search-row"><input id="searchFacts" type="search" placeholder="gravity, friction, fossils..."><button id="searchButton">検索</button></div>
+        <div id="searchResults" class="search-results"></div>
+      </section>
+      <section class="inspector-section">
+        <label class="micro-title" for="customRule">1行だけ追加して再計算（自由実験）</label>
+        <textarea id="customRule" rows="2" maxlength="300" placeholder="example: gravity pulls objects > upward"></textarea>
+        <button id="applyChanges" class="outline-button">差分を再計算 ↗</button>
+        <button id="restore" class="small-link">変更を元に戻す</button>
+      </section>
+    </div>
+  </aside>
+</section>
+
+<section id="viewSource" class="research-view hidden">
+ <div class="section-header"><span class="overline">ORIGINAL CODE / PUBLIC MODEL</span><h2>公開モデルのコードを読む</h2><p>ソースはオリジナルの固定コミットからそのまま収録しています。教育用スコア計算と異なり、こちらは著者が公開した実際の実装です。</p></div>
+ <div class="source-grid">
+   <div class="source-sidebar">
+     <div class="micro-title">元モデルのパイプライン</div>
+     <div class="code-steps">
+       <button data-source="build.py" data-line="1" class="active"><b>① KB → WEIGHTS</b><span>build.py · 知識をテンソル化</span></button>
+       <button data-source="arch.py" data-line="4"><b>② TOKENS → CONCEPTS</b><span>bags() · 質問/選択肢を概念化</span></button>
+       <button data-source="arch.py" data-line="15"><b>③ CONCEPT PAIRS</b><span>forward() · 上位16概念のペア</span></button>
+       <button data-source="arch.py" data-line="25"><b>④ HASHED READ</b><span>ペアをハッシュして行を読む</span></button>
+       <button data-source="arch.py" data-line="34"><b>⑤ OPTION SCORING</b><span>連想の読み出しと選択肢得点</span></button>
+       <button data-source="NOTES.md" data-line="1"><b>⑥ AUTHOR NOTES</b><span>設計意図・誤りと改善経緯</span></button>
+     </div>
+     <img src="/assets/original_architecture.png" alt="Weight-Space Programming原著のTransformerと連想メモリの構造比較図" class="source-figure">
+     <p class="figure-credit">© Hyunjong Ok・Jaeho Lee · 原著MITライセンス。図は著者の公開素材。</p>
+   </div>
+   <div class="source-editor">
+     <div class="editor-head"><span id="editorPath">arch.py</span><a id="editorLink" target="_blank" rel="noopener" href="https://github.com/effl-lab/Weight-Space-Programming">原文をGitHubで開く ↗</a></div>
+     <div id="editorCode" class="editor-code" tabindex="0" aria-label="原著Pythonコード。行番号をクリックできます"></div>
+     <div class="code-foot">内容は固定コミットを収録。元のPythonコードは実行していません。教育用アプリは別の近似計算を使います。</div>
+   </div>
+ </div>
+</section>
+
+<section id="viewResearch" class="research-view hidden">
+ <div class="section-header"><span class="overline">RESEARCH / PAPER ATLAS</span><h2>論文が何を示したのか</h2><p>Hyunjong Ok・Jaeho Lee（POSTECH）, <i>Weight-Space Programming Doesn't Need Transformers</i>, 2026年11月17日公開。引用数値は著者の公開READMEを参照し、このアプリの再測定結果とは区別しています。</p></div>
+ <div class="paper-lead">
+   <div><span class="overline">CORE IDEA</span><h3>勾配で更新するのではなく、LLMが「どこに何を格納するか」を記述する</h3><p>本論文は、Transformerを訓練しやすい形だからという理由だけで、LLMが重みを直接設計する場面にも採用すべきか問い直しています。自由設計では3つのLLMが疎な知識テーブルへ向かいました。</p>
+     <div class="research-links"><a href="https://arxiv.org/abs/2611.22055" target="_blank" rel="noopener">論文の原文 ↗</a><a href="https://github.com/effl-lab/Weight-Space-Programming" target="_blank" rel="noopener">公式コード ↗</a><a href="https://wsp-no-transformer.github.io" target="_blank" rel="noopener">著者プロジェクトページ ↗</a></div>
+   </div>
+   <img src="/assets/original_teaser.png" alt="著者公開の重み更新と連想メモリの比較図">
+ </div>
+ <div class="metric-cards" id="modelMetrics"></div>
+ <div class="chart-section"><div><span class="overline">PUBLISHED ARC TEST / n=3,530</span><h3>書き手と構造で比較する</h3><p>パーセンテージは著者報告のテスト正答率。既存の事前学習済みLLMと同等だと主張するものではありません。</p></div><div id="resultChart" class="result-chart"></div></div>
+ <div class="two-study-cards">
+  <article><span class="overline">BEGINNER</span><h3>「重みを手で書く」とは？</h3><p>文章で知識を記述し、所定の計算手続きが読みやすい連想テーブルに格納する考え方です。1行の削除で影響が局所的になりやすいというのが論文の観察です。</p></article>
+  <article><span class="overline">ADVANCED</span><h3>この論文が証明していないこと</h3><p>ARCの4択中心の比較です。一般的なチャット能力や事前学習LLMへの全面的な優位性、すべてのデータに対する学習不要性を示すものではありません。勾配学習型のTransformerとの比較条件を確かめましょう。</p></article>
+ </div>
+ <div class="paper-gallery"><img src="/assets/original_designed_three.png" alt="著者が公開したOpus、Sol、Astraの3種類の設計比較図"><img src="/assets/original_speed.png" alt="著者が報告した連想メモリとTransformerの速度比較図"></div>
+ <div class="paper-footer-note">図の著作権・実験数値は原著者に帰属します（MIT、固定コミット）。本アプリの軽量デモは別実装です。原著のPyTorch/CUDAによる再現手順は <a href="/docs/REPRODUCE_ORIGINAL.html" target="_blank" rel="noopener">再現ガイド</a>をご覧ください。</div>
+</section>
+</main>
+
+<footer class="footer"><span>WEIGHT-SPACE LIVE LAB · Independent educational experiment · No external API</span><span>Original: <a href="https://github.com/effl-lab/Weight-Space-Programming" target="_blank" rel="noopener">Ok & Lee / POSTECH</a> · MIT · arXiv:2611.22055 · Pinned source</span></footer>
+<div class="toast hidden" id="toast" role="status" aria-live="polite"></div>
+</div>
+</body></html>
