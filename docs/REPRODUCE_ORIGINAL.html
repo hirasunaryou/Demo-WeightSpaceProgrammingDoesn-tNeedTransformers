@@ -1,0 +1,60 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WSP原著の再現環境｜Weight-Space Live Lab</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f5f8f7;color:#1b3d49;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;line-height:1.88;font-size:14px}
+.wrap{max-width:1020px;padding:0 32px;margin:0 auto}
+header{background:radial-gradient(circle at 84% 10%,#285668,transparent 47%),#0c2435;color:#e9faf6;padding:69px 0 75px}
+.eyebrow{font-size:11px;letter-spacing:.2em;color:#87ebd7;font-weight:900}h1{font-size:clamp(35px,5vw,54px);letter-spacing:-.05em;line-height:1.4;margin:16px 0}header p{max-width:760px;color:#b7d2dc}
+header a{color:#96f4da}
+main{padding:55px 0}h2{font-size:27px;letter-spacing:-.04em;margin:24px 0 10px}h3{font-size:18px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:17px;margin:24px 0}.cards article{background:white;border:1px solid #d6e4e6;border-radius:13px;padding:22px}.cards span{font-size:11px;color:#138f7c;font-weight:900;letter-spacing:.13em}.cards p,li{color:#50717d;font-size:13px;line-height:1.9}
+a{color:#137e70}.warn{border-left:4px solid #d8ab68;background:#fff7e8;border-radius:6px;padding:17px 20px;color:#775b3a;font-size:13px;margin:19px 0}
+pre{background:#11293c;color:#c3f0e7;border-radius:11px;padding:17px 20px;overflow-x:auto;font-size:12px;line-height:1.8}
+code{font-family:ui-monospace,Menlo,Consolas,monospace}
+table{width:100%;border-collapse:collapse;background:white;border:1px solid #d9e5e7;border-radius:10px;overflow:hidden;font-size:13px}
+th,td{padding:12px 15px;border-bottom:1px solid #dce7e9;text-align:left;vertical-align:top}th{background:#e4f4f0;color:#176e66}td{color:#4d6b77}
+footer{background:#10293b;color:#a9ccd5;padding:30px 0;font-size:11px}
+@media(max-width:700px){.wrap{padding:0 17px}.cards{grid-template-columns:1fr}header{padding:44px 0}}
+</style></head><body><header><div class="wrap"><span class="eyebrow">ORIGINAL WSP / REPRODUCIBILITY</span>
+<h1>教材と、原著の再現は<br>別の実行環境です。</h1>
+<p>本ページは著者の2026年11月時点の公式READMEに基づく準備手順の概要です。Python標準ライブラリだけで動くLive Labと、PyTorchで原著モデルを評価する作業を混同しないために設けています。</p>
+<a href="https://github.com/effl-lab/Weight-Space-Programming#setup" target="_blank" rel="noopener">原著の完全なSetupを読む ↗</a></div></header>
+<main class="wrap">
+<div class="cards">
+<article><span>DEFAULT / LIVE LAB</span><h3>勉強会用の軽量デモ</h3><p>Mac・Windowsで起動。追加pip、GPU、venv不要。収録した原著の一部知識行を、独立した教材用スコア計算で観察・編集。</p></article>
+<article><span>ORIGINAL / WSP AUTHORS</span><h3>公開モデルと評価コード</h3><p>著者の<code>build.py</code>が重みを作り、<code>arch.py</code>がPyTorchで読み出す。ARC 3,530問の精度・GPU速度は原著の測定値で、このデモでは再計測していません。</p></article>
+</div>
+<section><h2>必要な実行環境</h2><table>
+<tr><th>項目</th><th>原著READMEの説明</th></tr>
+<tr><td>OS</td><td>一連の実験管理はLinuxで、bubblewrap（bwrap 0.6.3）が使われています。</td></tr>
+<tr><td>Python</td><td>Python 3.11（著者の使用例3.11.13）、公式requirements.txtで依存関係を固定。</td></tr>
+<tr><td>ライブラリ</td><td>PyTorch、NumPy、Hugging Face関連パッケージなど。モデルによって別venvが必要。</td></tr>
+<tr><td>GPU</td><td>公開テキストのARCモデル評価はCPUで行える部分があります。一部のリリース済みLM編集やベースラインはCUDA GPUが必要。</td></tr>
+<tr><td>データ</td><td>ARC（AI2 Reasoning Challenge）を事前取得。データのライセンスはCC BY-SA 4.0。</td></tr>
+<tr><td>LLM Writer</td><td>新しいモデルの作成・lineage実験は商用LLMとCLI認証を用います。公開済みモデルの閲覧・教材体験にWriterは不要です。</td></tr>
+</table></section>
+<section><h2>原著のモデルを再評価する場合</h2><p>正確な準備と依存関係は、固定した公式READMEを優先してください。以下は原著のコマンドに沿った見取り図です。<strong>このページで実行した・成功を検証したコマンドではありません。</strong></p>
+<pre>git clone https://github.com/effl-lab/Weight-Space-Programming.git
+cd Weight-Space-Programming
+git checkout c3324efa7e8aeec9ff7b7303094799b67a20793b
+
+# Linuxのvenv等に公式依存関係をセットアップ
+python -m pip install -r requirements.txt
+
+# ARCデータをHugging Faceから事前にダウンロード
+huggingface-cli download allenai/ai2_arc --repo-type dataset
+
+export WSP_DATA_ROOT=/path/to/wsp_data
+export HF_HOME=/path/to/hf_cache
+
+# 著者のscore_modelはLinux bwrap環境を前提とします
+python -m harness.score_model \
+  models/opus/mem_assoc2_g5-arc_blind_K0_r0</pre>
+<div class="warn"><strong>実験費用と再現性</strong>：Writerエージェントを新しく動かす場合はAPI課金・CLI設定が必要になる可能性があります。自動的にWriterは起動しないでください。また、異なるCPUでは浮動小数点演算順序により0.数ポイント程度の変動が生じ得ることを著者は説明しています。</div></section>
+<section><h2>原典へ戻る</h2><ul>
+<li><a href="https://arxiv.org/abs/2611.22055">Weight-Space Programming Doesn't Need Transformers — arXiv</a></li>
+<li><a href="https://github.com/effl-lab/Weight-Space-Programming">effl-lab / Weight-Space-Programming — GitHub</a></li>
+<li><a href="https://github.com/effl-lab/Weight-Space-Programming/blob/c3324efa7e8aeec9ff7b7303094799b67a20793b/models/opus/mem_assoc2_g5-arc_blind_K0_r0/arch.py">モデルの読み出しコード arch.py</a></li>
+<li><a href="https://github.com/effl-lab/Weight-Space-Programming/blob/c3324efa7e8aeec9ff7b7303094799b67a20793b/models/opus/mem_assoc2_g5-arc_blind_K0_r0/build.py">知識コンパイラ build.py</a></li>
+</ul></section>
+</main><footer><div class="wrap">Independent educational notes · Original research © Hyunjong Ok &amp; Jaeho Lee (MIT) · Pinned 2026-11-21</div></footer></body></html>
