@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Weight-Space Live Lab | 図解フィールドガイド</title>
+<!--EMBED_STYLES-->
+</head>
+<body>
+<header class="mast">
+ <div class="wrap">
+  <div class="mast-top"><strong>WEIGHT-SPACE <em>LIVE LAB</em></strong><span>FIELD GUIDE / SOURCE-FIRST EDITION</span></div>
+  <div class="hero-grid">
+   <div><span class="eyebrow"><i></i> ANATOMY OF WEIGHT-SPACE PROGRAMMING</span>
+    <h1>重みを「学習」せず、<br><em>直接書き込む。</em></h1>
+    <p>LLMが書いた知識が、どのように連想メモリへ変換され、4択の回答に使われるのか。実物の公開コードを眺め、学習用サンドボックスで一行を書き換えて確かめます。</p>
+    <div class="pills"><span>原著の知識行</span><span>CPUで即起動</span><span>追加pip不要</span><span>回答を追跡</span></div>
+    <a class="primary" href="#setup">最初の実験へ <span>↘</span></a>
+   </div>
+   <div class="hero-schematic">
+     <div class="schematic-head">WSP IDEA <span>● LIVE LAB</span></div>
+     <div class="schematic-body">
+       <div class="s-node"><small>ORIGINAL / SOURCE</small><strong>gravity pulls objects &gt; down toward earth center</strong></div>
+       <div class="s-arrow">↓ <span>COMPILER</span></div>
+       <div class="s-node next"><small>ASSOCIATIVE MEMORY</small><strong>(gravity, pulls) → down, earth</strong></div>
+       <div class="s-arrow">↓ <span>READ</span></div>
+       <div class="s-node final"><small>DEMO / SCORING</small><strong>answer scores: A / B / C / D</strong></div>
+     </div>
+     <div class="schematic-note">※ 概念図。格納先と数値は教材用近似であり、原著モデルの実テンソルを再現した図ではありません。</div>
+   </div>
+  </div>
+ </div>
+</header>
+<nav class="contents"><div class="wrap">
+ <a href="#setup">01 起動</a><a href="#overview">02 画面案内</a><a href="#mechanism">03 仕組み</a><a href="#experiment">04 1行を変える</a><a href="#paper">05 原著と結果</a><a href="#truth">06 本物と教材の区別</a><a href="#faq">07 FAQ</a>
+</div></nav>
+<main class="wrap">
+<section id="setup" class="chapter">
+ <span class="section-key">01 / GET STARTED</span><h2>Pythonだけで、<em>実験を始める。</em></h2>
+ <p class="lead">この教材ビューアは、配布した原著の公開知識行とPython標準ライブラリだけで起動します。モデル重み・GPU・PyTorchは不要です。**原著の完全な評価環境とは別の構成です。**</p>
+ <div class="steps">
+   <div><span>01</span><div class="step-graphic"><b>↓</b></div><h3>ZIPをダウンロード</h3><p><a href="https://github.com/hirasunaryou/Demo-WeightSpaceProgrammingDoesn-tNeedTransformers">GitHubリポジトリ</a>のCode → Download ZIPで取得して展開。</p></div>
+   <div><span>02</span><div class="step-graphic"><b>▶</b></div><h3>ダブルクリック</h3><p>Macなら <code>start_mac.command</code>。Windowsなら <code>start_windows.bat</code>。</p></div>
+   <div><span>03</span><div class="step-graphic"><b>✳</b></div><h3>公開知識を動かす</h3><p>ブラウザで重力の例題を選び「▶ 知識を読み出す」。元知識行から得点までを確認できます。</p></div>
+ </div>
+ <p class="hint">必要：Python 3.8以上。GPU・APIキー・venv・pipによる追加ライブラリは不要です。実行するのは教材用の独立プログラムであり、原著のTorch推論エンジンではありません。</p>
+</section>
+<section id="overview" class="chapter">
+ <span class="section-key">02 / UI ORIENTATION</span><h2>「なぜその得点？」を、<em>3つの領域で。</em></h2>
+ <p class="lead">左で質問、中央で知識からスコアまでの流れを観察、右で使われた知識行を調べ、1行だけ無効化できます。</p>
+ <figure class="screenshot"><div class="screenshot-head">● ACTUAL RUN / ORIGINAL FACTS + TEACHING MODEL <small>DARK VIEW</small></div><img src="images/overview.png" alt="実アプリのダークモード画面：4択質問・知識の流れ・根拠行一覧" width="1600"><figcaption>ブラウザで実際の教材を動かして撮影。図のスコアは教育用モデルの結果です。</figcaption></figure>
+ <div class="columns3">
+   <article><span>QUESTION</span><h3>質問を入力する</h3><p>4択の理科問題を選択・編集。初級者は既定の例題から始めます。</p></article>
+   <article><span>MEMORY READ</span><h3>概念とペアを観察する</h3><p>実際の公開知識が材料。概念化・ペアのアドレス・回答の得点という処理を観察します。</p></article>
+   <article><span>EVIDENCE / EDIT</span><h3>知識を変更する</h3><p>どの行が候補を支持したか調べ、チェックを外した時の差分を見ることができます。</p></article>
+ </div>
+</section>
+<section id="mechanism" class="chapter">
+ <span class="section-key">03 / THE KEY IDEA</span><h2>知識を文章から、<em>連想関係へ。</em></h2>
+ <p class="lead">原著モデルには、大きく分けて「著者が公開したテキスト知識」「重みを組み立てるbuild.py」「その重みから選択肢を読むarch.py」があります。</p>
+ <div class="mechanism-grid">
+  <div class="mechanism-flow">
+   <div><b>① LLMが知識を書き出す</b><code>seasons summer &gt;! closer to sun</code><small>誤答への反対証拠を含むこともできます。</small></div>
+   <div class="flow-down">↓</div>
+   <div><b>② concept IDと連想テーブルを構築</b><code>build.py · first-order A / second-order row table</code><small>WSPでの「重みを書く」工程。勾配を求めません。</small></div>
+   <div class="flow-down">↓</div>
+   <div><b>③ ペアのハッシュで読み出す</b><code>row = (a × 1000003 + b) mod H</code><small>原著のarch.py。上位16概念のペア（最大120組）を使います。</small></div>
+   <div class="flow-down">↓</div>
+   <div><b>④ 4つの選択肢を得点化</b><code>read → overlap → score(A,B,C,D)</code><small>回答は文章生成ではなくARCの選択肢比較です。</small></div>
+  </div>
+  <div class="mechanism-aside">
+   <img src="../assets/original_architecture.png" alt="原著のTransformer・LLM設計モデル・連想メモリモデルの比較図" width="900">
+   <p><strong>著者の原図：</strong>Transformerと、公開された連想メモリの構造比較。© Ok &amp; Lee / MIT。</p>
+   <div class="source-links"><a href="https://github.com/effl-lab/Weight-Space-Programming/blob/c3324efa7e8aeec9ff7b7303094799b67a20793b/models/opus/mem_assoc2_g5-arc_blind_K0_r0/arch.py" target="_blank" rel="noopener">arch.pyの原文 ↗</a><a href="https://github.com/effl-lab/Weight-Space-Programming/blob/c3324efa7e8aeec9ff7b7303094799b67a20793b/models/opus/mem_assoc2_g5-arc_blind_K0_r0/build.py" target="_blank" rel="noopener">build.pyの原文 ↗</a></div>
+  </div>
+ </div>
+ <div class="level-grid">
+  <article><span>BEGINNER</span><h3>初級者への説明</h3><p>「Gravityが引っ張る → 下方向」といった知識が保存され、質問に応じて関係する知識を読み出します。知識は人間が読める文字列に由来します。</p></article>
+  <article><span>ADVANCED</span><h3>上級者への説明</h3><p>元のモデルは語彙の概念統合、IDF、一次連想行列A、概念ペアからの二次連想表、スコア計算を行います。教材実装は要点だけを近似しており、著者の全ての正規化・否定処理・衝突処理を再現しません。</p></article>
+ </div>
+</section>
+<section id="experiment" class="chapter">
+ <span class="section-key">04 / EDIT ONE ROW</span><h2>たった1行で、<em>結果は変わるか？</em></h2>
+ <p class="lead">右の根拠一覧で行をOFFにして「差分を再計算」を押します。WSPの「編集可能な知識」という面白さを、その場で体験できます。</p>
+ <figure class="screenshot"><div class="screenshot-head">● ACTUAL ABLATION / TEACHING EXPERIMENT <small>SOURCE FACTS ARE UNCHANGED</small></div><img src="images/ablation.png" alt="実アプリで1つの知識行を無効化した前後の選択肢スコアを比較する画面" width="1600"><figcaption>実画面での行の無効化・スコア差分。教育用近似計算であり、原著モデルの重みを削除した実験結果ではありません。</figcaption></figure>
+ <div class="sequence"><span>原著から収録した事実行</span><i>→</i><span>一部をOFFにする</span><i>→</i><span>同じ4択を再計算</span><i>→</i><span>選択肢ごとのΔを比較</span></div>
+ <div class="warning"><strong>ここが実験の境界です。</strong><p>この教材では、原著のテキスト行を実際に使いながら、スコアは独立の簡略モデルで計算します。「削除した事実の影響が局所的」という原著の検証数値を、教材の得点差だけで再現したと結論づけないでください。</p></div>
+</section>
+<section id="paper" class="chapter">
+ <span class="section-key">05 / PUBLISHED PAPER</span><h2>論文は、<em>どこまで示したか。</em></h2>
+ <p class="lead">Hyunjong Ok, Jaeho Lee（POSTECH）, 2026年11月17日公開。10例のARCデータをもとにLLMが重みを作成し、自由設計では3つの書き手が疎テーブルを採用しました。</p>
+ <img class="wide-figure" src="../assets/original_teaser.png" alt="著者原図：勾配更新とLLMによるweight-space programmingの比較、パラメータ規模と推論速度">
+ <div class="paper-metrics"><div><strong>54.4%</strong><span>自由設計の最高ARC test accuracy</span></div><div><strong>52.4%</strong><span>提案連想メモリのOpus最終世代</span></div><div><strong>3,530</strong><span>評価したARCの4択問題数</span></div><div><strong>×17</strong><span>同規模TransformerとのGPU速度比較の最大値</span></div></div>
+ <p class="smallprint">いずれも原著者が報告した比較条件下の値で、教材アプリの測定結果ではありません。事前学習済み言語モデルを上回る一般能力を示す結果ではありません。</p>
+ <div class="paper-links"><a href="https://arxiv.org/abs/2611.22055" target="_blank" rel="noopener">arXiv原著 ↗</a><a href="https://github.com/effl-lab/Weight-Space-Programming" target="_blank" rel="noopener">公式GitHub ↗</a><a href="https://wsp-no-transformer.github.io" target="_blank" rel="noopener">著者プロジェクト ↗</a></div>
+</section>
+<section id="truth" class="chapter">
+ <span class="section-key">06 / SCIENTIFIC FIDELITY</span><h2>本物の資料と、<em>教材の計算を分ける。</em></h2>
+ <div class="compare">
+ <div><span class="original-label">ORIGINAL / VERBATIM</span><h3>原著・実データ</h3><p>公開知識行、コード、設計メモ、論文図、公開モデルのresult.json。</p><p>MITライセンスの原文を固定コミットで収録しています。元のPyTorchコードは通常起動では実行しません。</p></div>
+ <div><span class="demo-label">LIVE LAB / EDUCATIONAL</span><h3>学習用の可視化</h3><p>簡略化した語彙・IDF・一次／二次連想、4択スコア、変更前後の差分。</p><p>理解の入口として独立に作った近似計算です。ARCの原著正答率を再現した値ではありません。</p></div>
+ </div>
+ <p class="footnote">原著の完全再現ではPython 3.11、PyTorch、Linux bubblewrap、ARCデータ、実験種別に応じたCUDA環境が必要になります。詳しくは<a href="https://github.com/effl-lab/Weight-Space-Programming#setup" target="_blank" rel="noopener">原著READMEのSetup</a>をご覧ください。</p>
+</section>
+<section id="faq" class="chapter">
+ <span class="section-key">07 / HELP DESK</span><h2>よくある疑問。</h2>
+ <details><summary>PyBotと同じように、これもLLMを使わずに動く？</summary><p>学習用サンドボックスはPython標準ライブラリだけで動きます。しかし原著のWSPは、モデルを作る工程でLLMが知識や重みを書きます。完成後のモデルの読み出しは別の計算です。</p></details>
+ <details><summary>日本語の質問を入力してもいい？</summary><p>原著の公開モデルはARC英語4択問題を中心に設計されました。教材の簡略化した語彙も英語が基本です。日本語の説明はUI側で提供しますが、正しい英訳を自動保証するものではありません。</p></details>
+ <details><summary>モデルを一行変更したら原著の成績も変わる？</summary><p>いいえ。このアプリで変更するのは教育用のメモリだけです。原著モデルの実テンソルやARCベンチマークは変更・再評価していません。</p></details>
+ <details><summary>どうしてGPU・venvが要らないの？</summary><p>通常起動では原著の大規模PyTorchモデルを実行せず、原著の一部テキスト知識を学習用の簡略化した数値処理で読み取ります。フロントエンドは素のHTML・CSS・JavaScriptです。</p></details>
+ <details><summary>Mac・Windowsのセットアップは？</summary><p>ZIPを展開し、Macなら <code>start_mac.command</code>、Windowsなら <code>start_windows.bat</code>。Python 3.8以上があれば通常モードは動きます。</p></details>
+</section>
+</main>
+<footer><div class="wrap"><div><strong>WEIGHT-SPACE LIVE LAB</strong><p>原著を読む。自分の仮説で試す。ソースに戻る。</p></div><div><p>Independent educational interface · Original © Ok &amp; Lee (MIT)</p><a href="https://github.com/effl-lab/Weight-Space-Programming" target="_blank" rel="noopener">公式GitHub ↗</a></div></div></footer>
+</body></html>
