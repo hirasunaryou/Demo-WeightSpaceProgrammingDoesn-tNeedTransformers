@@ -96,7 +96,7 @@ class EducationalAnalogueTests(unittest.TestCase):
         sc=data.SCENARIOS[0]
         baseline=evaluate(sc["question"],sc["options"])
         changed=evaluate(sc["question"],sc["options"],
-                         custom="gravity pulls objects > upward")
+                         custom="gravity pulls objects > up away from earth")
         self.assertFalse(changed["original_model_executed"])
         self.assertEqual(changed["baseline"],baseline["baseline"])
         self.assertTrue(any(abs(x)>0 for x in changed["changes"]))
@@ -155,7 +155,7 @@ class WebTests(unittest.TestCase):
         sc=data.SCENARIOS[0]
         out=self.post("api/evaluate",{"question":sc["question"],"options":sc["options"]})
         self.assertFalse(out["original_model_executed"])
-        self.assertIn("original torch",out["limitations"][1])
+        self.assertIn("original PyTorch",out["limitations"][1])
         self.assertEqual(len(out["edited"]["scores"]),4)
         with self.assertRaises(HTTPError) as ctx:
             self.get("api/source?file=../../etc/passwd")
