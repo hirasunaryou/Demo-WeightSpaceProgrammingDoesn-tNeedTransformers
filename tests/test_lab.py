@@ -104,6 +104,22 @@ class EducationalAnalogueTests(unittest.TestCase):
                          "c3324efa7e8aeec9ff7b7303094799b67a20793b")
         self.assertFalse((data.SNAPSHOT/"kb"/"local/demo_added_rule.txt").exists())
 
+    def test_new_unrelated_rule_does_not_remap_existing_concepts(self):
+        from lab.associate import EducationalMemory
+        sc=data.SCENARIOS[0]
+        memory=released_subset_memory()
+        extra=data.parse_line("blorfish quuxatron > xenotrophic zumber",
+                              "local/demo_added_rule.txt",1)
+        edited=EducationalMemory(list(memory.rules)+[extra],base_memory=memory)
+        for word in ("gravity","earth","pulls","down"):
+            self.assertEqual(memory.ids[word],edited.ids[word])
+            self.assertEqual(memory.idf[word],edited.idf[word])
+        self.assertEqual(
+            memory.score(sc["question"],sc["options"])["scores"],
+            edited.score(sc["question"],sc["options"])["scores"],
+            "Unrelated custom facts must not change answers by shifting every concept's hash ID."
+        )
+
     def test_inputs_rejected(self):
         with self.assertRaises(ValueError):
             evaluate("",["A","B","C","D"])
