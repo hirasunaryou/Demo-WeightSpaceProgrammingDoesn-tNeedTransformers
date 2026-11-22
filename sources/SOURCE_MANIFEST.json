@@ -1,0 +1,36 @@
+{
+  "source_repository": "effl-lab/Weight-Space-Programming",
+  "source_commit": "c3324efa7e8aeec9ff7b7303094799b67a20793b",
+  "source_url": "https://github.com/effl-lab/Weight-Space-Programming/tree/c3324efa7e8aeec9ff7b7303094799b67a20793b",
+  "authors": "Hyunjong Ok and Jaeho Lee (POSTECH)",
+  "paper": "https://arxiv.org/abs/2611.22055",
+  "license": "MIT",
+  "license_file": "sources/reference/LICENSE",
+  "released_model": "models/opus/mem_assoc2_g5-arc_blind_K0_r0",
+  "copied_facts": [
+    "facts_basic.txt",
+    "facts_physics.txt",
+    "facts_earth.txt",
+    "facts_g2_miscon.txt",
+    "facts_g5_reason.txt",
+    "facts_g5_traps.txt",
+    "facts_g3_direction.txt",
+    "facts_life.txt",
+    "facts_glossary.txt"
+  ],
+  "copied_original_code": [
+    "arch.py",
+    "build.py",
+    "NOTES.md",
+    "result.json"
+  ],
+  "copied_original_figures": [
+    "assets/original_teaser.png",
+    "assets/original_architecture.png",
+    "assets/original_designed_three.png",
+    "assets/original_speed.png"
+  ],
+  "caveat": "Only excerpts of the released corpus; source files are verbatim under MIT. The app's dependency-free teaching solver is an independent approximation, NOT the torch-based original forward() or its reported accuracy.",
+  "original_system_requirements": "Python 3.11, PyTorch, pinned dependencies, Linux bubblewrap for original harness; some baselines need CUDA",
+  "archived_on": "2026-11-22"
+}
