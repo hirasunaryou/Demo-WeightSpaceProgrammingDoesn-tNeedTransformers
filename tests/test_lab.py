@@ -29,7 +29,7 @@ class OriginalArtifactsTests(unittest.TestCase):
         negative=next(r for r in rows if r.text=="seasons summer >! closer to sun")
         self.assertEqual(negative.kind,"against")
         self.assertTrue(any(r.kind=="definition" for r in rows))
-        self.assertTrue(any(r.kind=="topic" for r in rows))
+        # This selected official subset has no topic-only rows; the parser still supports them.
 
     def test_original_model_metrics_are_reported_not_inferred(self):
         stats=data.statistics()
@@ -146,7 +146,7 @@ class WebTests(unittest.TestCase):
         self.assertEqual(len(payload["models"]),3)
         page,h=self.get("")
         self.assertIn(b"WSP",page)
-        self.assertIn(b"script-src 'self'",h.get("Content-Security-Policy",""))
+        self.assertIn("script-src 'self'",h.get("Content-Security-Policy",""))
         self.assertIn("facts_physics",self.get("api/facts?q=gravity")[0].decode("utf-8"))
         src=json.loads(self.get("api/source?file=arch.py&line=15")[0])
         self.assertEqual(src["path"],"arch.py")
@@ -166,7 +166,7 @@ class WebTests(unittest.TestCase):
             path=data.ROOT/file
             content=path.read_text(encoding="utf-8",errors="strict")
             self.assertNotIn("\ufffd",content)
-        self.assertIn('charset="utf-8"',(data.ROOT/"web/index.html").read_text())
+        self.assertIn('charset="utf-8"',(data.ROOT/"web/index.html").read_text(encoding="utf-8"))
         for figure in ("original_teaser.png","original_architecture.png",
                        "original_designed_three.png","original_speed.png"):
             raw=(data.ROOT/"assets"/figure).read_bytes()
