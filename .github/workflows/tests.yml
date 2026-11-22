@@ -1,0 +1,45 @@
+name: WSP Live Lab — cross-platform verification
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  stdlib:
+    name: Python standard library · ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Offline source and sandbox regression tests
+        run: python -m unittest discover -s tests -v
+      - name: Portable app HTTP self-check
+        run: python launch.py --self-check
+      - name: Mac double-click launcher path
+        if: runner.os == 'macOS'
+        run: |
+          bash -n start_mac.command
+          bash start_mac.command --self-check
+      - name: Windows batch launcher path
+        if: runner.os == 'Windows'
+        shell: cmd
+        run: call start_windows.bat --self-check
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.8'
+      - name: Python 3.8 compatibility
+        run: |
+          python -m compileall -q lab launch.py tests
+          python -m unittest discover -s tests -v
+      - name: Browser JavaScript syntax
+        run: node --check web/app.js
