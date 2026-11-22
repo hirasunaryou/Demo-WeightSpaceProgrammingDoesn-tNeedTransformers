@@ -1,0 +1,59 @@
+name: Live WSP screenshots and standalone HTML
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'lab/**'
+      - 'web/**'
+      - 'docs/MANUAL.source.html'
+      - 'docs/manual.css'
+      - 'tools/capture.py'
+      - 'tools/build_manual.py'
+      - 'tools/check_manual.py'
+      - '.github/workflows/screenshots.yml'
+permissions:
+  contents: write
+concurrency:
+  group: wsp-live-screenshots-main
+  cancel-in-progress: true
+jobs:
+  capture:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Japanese glyph coverage for real screenshots
+        run: |
+          sudo timeout 50 apt-get update -qq || echo 'Using runner package metadata'
+          sudo timeout 100 env DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends fonts-ipafont-gothic
+          fc-cache -f
+          fc-match -f '%{family}\n' 'IPAGothic:lang=ja'
+      - name: Install browser for visual CI only, not for app users
+        run: |
+          python -m pip install playwright==1.56.0
+          python -m playwright install chromium
+      - name: Drive actual authored facts and capture the app
+        run: python tools/capture.py
+      - name: Build standalone illustrated HTML manual
+        run: |
+          python tools/build_manual.py
+          python tools/build_manual.py --check
+      - name: Inspect offline single-file manual in browser
+        run: python tools/check_manual.py
+      - name: Commit reviewed real UI screenshots and portable guide
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/MANUAL.html docs/images/overview.png docs/images/ablation.png docs/images/code.png docs/images/research.png docs/images/light.png docs/images/manual-preview.png
+          if git diff --cached --quiet; then
+            echo 'No visual documentation changes'
+          else
+            git commit -m 'docs: refresh real WSP demo screenshots and portable HTML guide [skip ci]'
+            git fetch origin main
+            git rebase -X theirs origin/main
+            git push origin HEAD:main
+          fi
