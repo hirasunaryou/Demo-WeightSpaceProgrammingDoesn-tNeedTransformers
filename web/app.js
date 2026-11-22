@@ -201,11 +201,13 @@
       checkbox.setAttribute("aria-label",item.text+" を教材メモリに含める");
       checkbox.onchange=()=>{if(checkbox.checked)s.disabled.delete(item.id);else s.disabled.add(item.id);calculate();};
       const btn=element("button",null,item.text);
-      btn.title="オリジナルの行を開く";
-      btn.onclick=()=>openSource(item.path,item.line);
+      const isUserRule=item.path.startsWith("local/");
+      btn.title=isUserRule?"教材で追加した行（原著ではありません）":"オリジナルの行を開く";
+      btn.onclick=isUserRule?()=>{$("customRule").focus();toast("これは教材内で追加した行です。原著ファイルには存在しません。");}
+        :()=>openSource(item.path,item.line);
       main.append(checkbox,btn);outer.append(main);
       const meta=element("div","evidence-meta");
-      meta.append(element("span",null,item.path.split("/").pop()+":"+item.line));
+      meta.append(element("span",null,isUserRule?"LIVE LAB / 教材の追加行":item.path.split("/").pop()+":"+item.line));
       meta.append(element("strong",item.effect<0?"negative":"",(item.effect>0?"+":"")+item.effect.toFixed(3)));
       outer.append(meta);
       box.append(outer);
