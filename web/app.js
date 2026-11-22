@@ -183,14 +183,21 @@
       box.append(element("p","placeholder","計算すると、スコアに寄与した原著の知識行を確認できます。"));
       return;
     }
+    // Show both the original source evidence and the edited calculation.
+    // An original row that was disabled must remain visible for undo, while a
+    // locally added row must be labelled as Live Lab, NOT linked as original.
     const unique=new Map();
-    for(const row of s.result.baseline.scores){
-      for(const ev of row.evidence){
-        const current=unique.get(ev.id);
-        if(!current || Math.abs(ev.effect)>Math.abs(current.effect))unique.set(ev.id,ev);
+    for(const run of [s.result.baseline,s.result.edited]){
+      for(const row of run.scores){
+        for(const ev of row.evidence){
+          const current=unique.get(ev.id);
+          if(!current || Math.abs(ev.effect)>Math.abs(current.effect))unique.set(ev.id,ev);
+        }
       }
     }
-    const items=[...unique.values()].sort((a,b)=>Math.abs(b.effect)-Math.abs(a.effect)).slice(0,13);
+    const items=[...unique.values()].sort((a,b)=>
+      Number(b.path.startsWith("local/"))-Number(a.path.startsWith("local/")) ||
+      Math.abs(b.effect)-Math.abs(a.effect)).slice(0,13);
     $("rowCount").textContent=items.length+" ROWS";
     if(!items.length){box.append(element("p","placeholder","一致する知識行を特定できませんでした。別の問題を試してください。"));return;}
     items.forEach(item=>{
