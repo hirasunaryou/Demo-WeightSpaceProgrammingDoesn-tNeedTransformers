@@ -1,0 +1,69 @@
+# Generation 3: rules that depend on taking in vs giving off (#in / #out) and on absence (#without).
+# --- gases in and out
+photosynthesis plants absorb take in > carbon dioxide water sunlight
+photosynthesis plants release give off > oxygen
+plants absorb from air > carbon dioxide
+plants release into air > oxygen water vapor
+leaves absorb > carbon dioxide sunlight light energy
+leaves release > oxygen water vapor
+roots absorb > water minerals nutrients
+animals inhale absorb > oxygen
+animals exhale release give off > carbon dioxide water vapor
+humans exhale > carbon dioxide
+humans inhale > oxygen
+lungs absorb > oxygen
+lungs release > carbon dioxide
+cellular respiration absorbs uses > oxygen glucose sugar
+cellular respiration releases > carbon dioxide water energy
+burning fuel releases > carbon dioxide heat light energy
+burning fossil fuels release > carbon dioxide pollution
+decomposers release > carbon dioxide nutrients
+fermentation yeast releases > carbon dioxide alcohol
+volcanoes release > gases ash lava sulfur dioxide carbon dioxide
+ocean absorbs > carbon dioxide heat
+trees absorb > carbon dioxide
+# --- heat in and out
+melting absorbs > heat energy
+evaporation absorbs > heat energy cooling
+boiling absorbs > heat energy
+freezing releases > heat energy
+condensation releases > heat energy
+substance absorbs heat > temperature rises melts evaporates particles faster
+substance releases heat > temperature drops freezes condenses particles slower
+dark colors absorb > light heat
+light colors reflect > light heat
+black objects absorb > all colors light
+white objects absorb > least light
+water absorbs heat > slowly
+sand absorbs heat > quickly
+greenhouse gases absorb > heat infrared
+ozone absorbs > ultraviolet radiation
+sun releases emits > light heat energy radiation
+stars emit > light
+light bulb emits releases > light heat
+exothermic releases > heat
+endothermic absorbs > heat
+chemical reaction releases heat > exothermic
+chemical reaction absorbs heat > endothermic
+sweat evaporates absorbs > heat cooling
+# --- absence
+animals without backbone > invertebrates
+animals backbone > vertebrates
+without backbone >! vertebrates
+invertebrates lack > backbone
+cells without nucleus > prokaryotes bacteria
+cells nucleus > eukaryotes
+without nucleus >! eukaryotes
+plants without seeds > spores ferns mosses
+plants without flowers > conifers ferns mosses
+plants without tubes vascular tissue > mosses nonvascular
+space without air > vacuum
+without air sound > cannot travel
+without friction > keep moving
+without gravity > float
+without sunlight plants > die cannot make food
+without decomposers > dead matter piles up nutrients not recycled
+without atmosphere > craters extreme temperatures
+lack oxygen > suffocate die
+no atmosphere moon > craters no weather
+no light > dark cannot see

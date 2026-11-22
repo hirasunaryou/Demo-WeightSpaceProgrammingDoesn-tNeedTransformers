@@ -1,0 +1,171 @@
+# Generation 5: evidence -> conclusion, cause -> effect and "which best explains" rules, in the wording of the
+# questions (cues) and of the right options (answers).
+# --- earth evidence
+same fossils different continents > continents once joined together moved apart
+fossils africa south america > continents joined together pangaea moved
+matching rock layers continents > continents were joined
+coal antarctica > climate once warm continent moved
+fossil coral cold area > area once warm shallow sea
+seashell fossils desert > area once covered by water ocean
+fish fossils mountain > ocean floor uplifted
+layers rock fossils bottom > oldest
+fossils top layer > youngest most recent
+rock layer cuts across > younger than layers it cuts
+tilted folded rock layers > forces after layers formed
+glacial scratches boulders > glacier once covered area
+rounded smooth pebbles > water tumbled erosion river
+jagged sharp rocks > little weathering erosion
+sand grains rounded > wind water transport
+delta mouth river > deposition sediment slow water
+v shaped valley > river erosion
+u shaped valley > glacier
+mid ocean ridge rocks younger near ridge > seafloor spreading
+magnetic stripes ocean floor > seafloor spreading
+earthquake many small > magma moving volcano may erupt
+# --- weather evidence
+dark clouds falling pressure > rain storm coming
+barometer falling > storm approaching
+red sky morning > storm
+clear sky night > cooler temperatures
+cloudy night warmer > clouds trap heat
+humidity high > muggy sticky sweat evaporates slowly
+dew on grass morning > water vapor condensed cool night
+frost on windows > water vapor froze
+temperature drops wind shifts heavy rain > cold front passed
+coastal city temperature > milder than inland water heats cools slowly
+milder winters near ocean > water heats up cools down slowly high specific heat
+city warmer than countryside > pavement buildings absorb heat
+blacktop hotter grass > dark surface absorbs more sunlight
+# --- life evidence
+grass under tree thin > less sunlight shade
+plants shade smaller > less sunlight less photosynthesis
+plant grows toward window > phototropism light
+plant wilts > lack water
+plant leaves yellow > lack nitrogen nutrients sunlight
+plants in dark lose green color > no light chlorophyll
+seeds did not sprout > too cold too dry no water
+bread mold grows faster > warm moist dark
+fish die lake > less oxygen pollution algae bloom
+algae bloom > fertilizer runoff nutrients
+algae die decompose > bacteria use oxygen fish die
+population predator decreases prey > increases
+rabbits died drought coyotes decreased > less prey food
+prey decrease predator > less food decreases
+predators removed > prey increase overgrazing
+wolves removed deer > increase eat more plants
+wolves returned yellowstone > deer elk decrease plants recover
+bees decline > fewer flowers pollinated fewer fruits crops
+pesticide insects decrease birds > less food decrease
+food chain toxin > builds up top predators
+ddt eagles > thin eggshells
+new species introduced > competes native species decline
+trait more common over generations > helps survive reproduce natural selection
+dark moths survived polluted forest > camouflage less eaten by birds
+bacteria resistant antibiotics > natural selection survivors reproduce
+finch beaks different islands > adapted to different foods
+long thin beak > nectar flowers insects probe
+short thick beak > crack seeds nuts
+hooked beak > tear meat
+flat wide beak > strain water filter food
+webbed feet > swimming
+long legs bird > wading water
+offspring look like parents > inherited traits genes
+identical twins different > environment
+plants same seeds different heights > environment water sunlight soil
+animal fat stored fall > hibernate winter energy
+birds migrate south > food warmer temperatures
+fur thickens winter > insulation warm
+animals change color seasons > camouflage snow
+# --- matter and energy evidence
+sealed container mass > stays same conservation of mass
+ice melts sealed container mass > same
+mass before after reaction closed > same conserved
+mass after burning open > ash less gases escaped
+temperature increase reaction > exothermic releases heat
+temperature decrease reaction > endothermic absorbs heat
+bubbles form mixing > gas produced chemical reaction
+color changes mixing > chemical reaction new substance
+precipitate forms > solid chemical reaction
+ice melts molecules > move faster farther apart
+water boils molecules > move faster spread far apart gas
+gas cools molecules > slow down move closer
+heated ball ring > ball expanded
+heated metal > expands
+cooled metal > contracts shrinks
+balloon cold freezer > shrinks smaller
+balloon warm sun > expands larger
+air takes up space evidence > balloon inflates
+air has mass evidence > inflated balloon weighs more
+wooden block floats iron block sinks > density
+object sinks water > density greater than 1
+salt water floats egg > salt water denser
+oil water layers > oil less dense floats on top
+liquids layers density > densest bottom least dense top
+metal spoon hotter plastic > metal better conductor
+metal feels colder than wood > metal conducts heat away from hand faster
+foam cup keeps drink hot > insulator
+thermos double walls vacuum > prevents heat transfer conduction convection
+ice cube melts fastest > metal conducts heat
+ice cube melts slowest > foam wool insulator
+ice keep from melting > insulator foam wool cloth sawdust
+rubber ball bounces higher > elastic
+clay ball does not bounce > not elastic energy absorbed
+rough surface ball slows > more friction
+ball rolls farther tile > less friction smooth
+car stops suddenly passenger forward > inertia
+equal forces opposite directions > balanced no change in motion constant speed
+equal opposite forces > net force zero
+unequal forces > object accelerates direction larger force
+heavier object same push > less acceleration
+lighter object same push > more acceleration
+falling objects air > air resistance slows flat paper
+crumpled paper falls faster than flat > less air resistance
+feather hammer moon vacuum > fall same rate
+heat energy wasted engine > thermal energy friction
+most energy not used car > thermal energy heat
+light bulb wasted energy > heat
+efficient light bulb led > less heat less energy
+see lightning before thunder > light travels faster than sound
+sound echo canyon > reflects
+sound louder > more energy larger amplitude
+pitch higher shorter string > higher frequency
+pencil water looks bent > refraction light
+mirror image reversed > reflection
+plant appears green > reflects green light absorbs other colors
+red apple > reflects red light
+black shirt hot sun > absorbs light heat
+white shirt cool > reflects light
+magnet pick up paper clips > iron steel magnetic
+compass points north > earth magnetic field
+compass near magnet > needle moves
+bulb does not light > open circuit broken
+one bulb out others stay lit > parallel circuit
+one bulb out all go out > series circuit
+add batteries > brighter bulb more current voltage
+balloon sticks wall > static electricity charge
+hair stands up after hat > static electricity
+shock doorknob > static discharge
+# --- ph and chemistry evidence
+ph 2 > acid lemon juice vinegar stomach acid
+ph 1 2 3 > strong acid
+ph 7 > neutral pure water
+ph 12 13 > strong base bleach ammonia lye
+litmus red > acid
+litmus blue > base
+lemon juice > acid sour citric
+vinegar > acid acetic
+soap > base
+baking soda > base
+milk of magnesia antacid > base neutralize stomach acid
+# --- inquiry evidence
+results more reliable > more trials larger sample repeat
+results more reliable plants > many plants each group
+valid experiment > control group one variable
+same results other scientists > reliable valid
+conclusion supported > data
+wrong hypothesis > revise new experiment
+unexpected results > repeat check procedure
+record results data table > accurate record organize analyze
+measure same object several times > average more accurate
+graph shows increase > positive relationship
+investigation needs > control variables

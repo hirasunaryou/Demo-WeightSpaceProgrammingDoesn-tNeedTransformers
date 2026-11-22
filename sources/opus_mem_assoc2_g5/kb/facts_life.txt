@@ -1,0 +1,382 @@
+# Life science
+# --- living things and cells
+living things characteristics = made of cells grow reproduce respond environment use energy need food water air
+nonliving things > do not grow reproduce rocks water air
+living things need > food water air energy space shelter
+cell = basic unit structure function of all living things
+cell theory = all living things made of cells cells basic unit cells come from other cells
+smallest unit of life > cell
+nucleus = control center of cell contains dna chromosomes genetic material directs activities
+cell membrane = controls what enters leaves cell thin flexible boundary
+cell wall = rigid outer layer plant cells support protection cellulose
+cytoplasm = jelly like fluid inside cell organelles
+mitochondria = powerhouse cell releases energy from food cellular respiration
+chloroplast = photosynthesis plant cells chlorophyll green captures sunlight
+vacuole = stores water food waste large in plant cells
+ribosome = makes proteins
+endoplasmic reticulum = transports materials proteins in cell
+golgi = packages ships proteins
+lysosome = digests breaks down waste
+chlorophyll = green pigment captures light energy photosynthesis
+controls activities cell > nucleus
+contains genetic information > nucleus dna chromosomes
+releases energy cell > mitochondria
+makes food plant cell > chloroplast
+gives support plant cell > cell wall
+controls what enters leaves cell > cell membrane
+stores water plant cell > vacuole
+make proteins > ribosomes
+plant cell has animal cell does not > cell wall chloroplasts large vacuole
+animal cell lacks > cell wall chloroplasts
+plant cells shape > rectangular boxy cell wall
+animal cells shape > round irregular
+both plant and animal cells have > nucleus cell membrane cytoplasm mitochondria
+bacteria cell = prokaryotic no nucleus single celled
+prokaryote = no nucleus bacteria
+eukaryote = has nucleus plants animals fungi protists
+unicellular = single celled organism one cell bacteria amoeba paramecium yeast
+multicellular = many cells plants animals humans
+levels of organization = cells tissues organs organ systems organism
+tissue = group of similar cells working together
+organ = group of tissues working together heart lung stomach leaf
+organ system = group of organs working together
+specialized cells = different jobs nerve cells muscle cells blood cells
+diffusion = movement from high concentration to low concentration
+osmosis = water moves across membrane
+microscope = magnifies small objects cells
+cells first observed > robert hooke cork microscope
+cells divide > growth repair replace cells mitosis
+cell division mitosis = two identical cells same chromosomes growth repair
+meiosis = sex cells gametes half chromosomes egg sperm
+single celled organism moves > cilia flagella pseudopods
+paramecium moves > cilia
+euglena = flagellum chloroplasts protist
+amoeba moves > pseudopods
+yeast = single celled fungus bread rise carbon dioxide fermentation
+# --- photosynthesis and respiration
+photosynthesis = plants use sunlight water carbon dioxide make glucose sugar food release oxygen
+photosynthesis needs > sunlight light energy water carbon dioxide chlorophyll
+photosynthesis produces > glucose sugar oxygen
+photosynthesis occurs > chloroplasts leaves
+photosynthesis energy changes > light energy to chemical energy
+plants make own food > photosynthesis
+plants get energy from > sun sunlight
+plants release gas > oxygen
+plants take in gas > carbon dioxide
+plants absorb carbon dioxide > leaves stomata
+stomata = tiny openings leaves gas exchange carbon dioxide oxygen water vapor
+guard cells > open close stomata
+cellular respiration = cells break down glucose sugar with oxygen release energy carbon dioxide water
+respiration produces > energy carbon dioxide water
+respiration needs > glucose oxygen
+animals get energy from > food eating
+energy stored in food > chemical energy
+glucose = sugar made photosynthesis energy
+plants store food > starch roots stems seeds fruit
+oxygen we breathe comes from > plants algae photosynthesis
+most oxygen atmosphere produced > algae phytoplankton ocean plants
+photosynthesis respiration related > products of one are reactants of other carbon dioxide oxygen cycle
+fermentation = energy without oxygen yeast bacteria lactic acid alcohol
+muscles tired exercise > lactic acid not enough oxygen
+# --- plants
+plant parts = roots stems leaves flowers seeds fruits
+roots = absorb water nutrients minerals soil anchor plant hold in ground store food
+stem = supports plant carries water nutrients food between roots leaves
+leaves = make food photosynthesis capture sunlight gas exchange
+flower = reproduction makes seeds pollen eggs attracts pollinators
+seed = contains embryo young plant stored food seed coat
+fruit = protects seeds helps spread seeds ripened ovary
+xylem = tubes carry water minerals from roots up
+phloem = tubes carry food sugar from leaves to rest of plant
+vascular plants = xylem phloem tubes roots stems leaves trees ferns flowering plants
+nonvascular plants = no tubes moss small damp areas
+moss = nonvascular spores damp shady no roots rhizoids
+fern = vascular spores no seeds fronds
+gymnosperm = naked seeds cones conifers pine
+angiosperm = flowering plants seeds in fruit
+conifer = cones needles evergreen pine
+deciduous trees = lose leaves fall autumn
+evergreen = keeps leaves needles all year
+leaves change color fall > less chlorophyll shorter days less sunlight
+flower parts = petals sepals stamen pistil anther filament stigma style ovary ovule
+stamen = male part anther filament pollen
+pistil = female part stigma style ovary
+anther = makes pollen
+stigma = sticky top pistil receives pollen
+ovary = contains ovules becomes fruit
+ovule = becomes seed
+petals = colorful attract pollinators insects
+pollination = transfer of pollen from anther stamen to stigma pistil
+pollinators = bees butterflies hummingbirds bats moths insects wind
+bees help plants > pollination carry pollen
+bees get from flowers > nectar pollen food
+flowers bright colors scent nectar > attract pollinators insects bees
+fertilization plant > pollen joins egg ovule seed forms
+seed dispersal = spreading seeds wind water animals
+seeds dispersed wind > dandelion maple light fluffy wings
+seeds dispersed animals > burrs hooks fur fruit eaten berries
+seeds dispersed water > coconut float
+germination = seed sprouts begins grow
+seeds need germinate > water warmth oxygen air
+seed stored food > cotyledon endosperm
+plant life cycle = seed germination seedling adult plant flower pollination fruit seed
+plants need grow > sunlight water air carbon dioxide nutrients space
+plant without light > yellow pale dies no photosynthesis
+plant grows toward light > phototropism
+tropism = plant growth response to stimulus
+phototropism = growth toward light
+gravitropism = roots grow down stems grow up gravity geotropism
+thigmotropism = response to touch vines climb
+plant wilts > lack of water
+plants respond > light gravity water touch
+asexual reproduction plants > runners bulbs tubers cuttings spores
+potato grows from > tuber eye
+strawberry runners > asexual reproduction
+cactus adaptations > thick stem stores water spines leaves reduce water loss waxy coating shallow wide roots
+desert plants adaptations > store water small leaves spines thick waxy deep roots
+rainforest plants > large leaves drip tips vines
+venus flytrap traps insects > nitrogen poor soil
+thorns spines > protect plant from animals
+plants fertilizer provides > nitrogen phosphorus potassium nutrients
+nitrogen fixing bacteria > legumes roots beans peas clover
+carnivorous plants > nitrogen
+algae = simple plant like organisms photosynthesis water
+lichen = fungus algae together mutualism pioneer species rocks
+# --- animals
+vertebrates = animals with backbone spine fish amphibians reptiles birds mammals
+invertebrates = animals without backbone insects worms spiders jellyfish snails
+most animals are > invertebrates insects
+mammal = hair fur warm blooded live birth feed young milk mammary glands lungs
+bird = feathers wings beak lay hard shell eggs warm blooded hollow bones
+reptile = dry scaly skin cold blooded lay leathery eggs on land lungs
+amphibian = moist skin cold blooded lay eggs in water metamorphosis gills then lungs
+fish = gills scales fins cold blooded live in water lay eggs
+insect = six legs three body parts head thorax abdomen antennae exoskeleton
+arachnid = eight legs two body parts spiders scorpions ticks
+crustacean = hard exoskeleton crabs lobsters shrimp gills
+mollusk = soft body shell snails clams octopus
+cold blooded = ectotherm body temperature changes with environment reptiles amphibians fish
+warm blooded = endotherm constant body temperature birds mammals
+exoskeleton = hard outer covering insects crustaceans molt
+molting = shedding exoskeleton skin to grow
+whale dolphin breathe > lungs air blowhole mammals
+bat = flying mammal echolocation night
+penguin = bird cannot fly swims
+ostrich = largest bird cannot fly
+platypus = mammal lays eggs
+snake = reptile scales no legs smells with tongue
+sponge = simplest animal pores
+jellyfish = tentacles stinging cells
+earthworm = segmented worm soil breathes through skin
+octopus = mollusk eight arms ink camouflage
+spider web > catch prey insects
+spider = arachnid eight legs spins web not insect
+# --- life cycles
+life cycle = stages birth growth reproduction death
+complete metamorphosis = egg larva pupa adult butterfly moth beetle fly bee
+incomplete metamorphosis = egg nymph adult grasshopper dragonfly cricket cockroach
+butterfly life cycle = egg larva caterpillar pupa chrysalis adult butterfly
+caterpillar = larva of butterfly moth eats leaves
+chrysalis = pupa butterfly
+cocoon = pupa moth silk
+nymph = young insect looks like adult no wings
+grasshopper life cycle = egg nymph adult
+frog life cycle = egg tadpole froglet adult frog
+tadpole = young frog lives in water gills tail
+frog adult > lungs land legs
+metamorphosis = change in body form during life cycle
+mammals give birth > live young
+birds reptiles hatch from > eggs
+egg incubation > keep eggs warm parents
+chicken life cycle = egg chick hen rooster
+human life cycle = infant child adolescent adult
+# --- behavior and adaptation
+adaptation = trait that helps organism survive reproduce in environment
+structural adaptation = body part feature beak shape fur claws
+behavioral adaptation = action behavior migration hibernation
+camouflage = blends into surroundings hide from predators prey
+mimicry = looks like another organism harmful dangerous
+warning coloration = bright colors poisonous
+hibernation = deep sleep winter save energy food scarce slow heart rate
+migration = moving to another region seasons food warmer climate breeding
+animals migrate > food warmer weather breeding seasons
+birds fly south winter > migration food warmth
+instinct = inborn behavior not learned born knowing
+learned behavior = behavior learned from experience parents teaching practice
+inherited behavior > instinct
+animal behavior response > stimulus environment
+thick fur blubber > insulation keep warm cold climate arctic polar
+blubber = thick layer of fat whales seals insulation
+polar bear adaptations > thick fur white fur camouflage blubber large paws
+arctic animals white fur > camouflage snow
+desert animal adaptations > nocturnal burrow store water large ears release heat
+camel adaptations > hump fat store energy long eyelashes wide feet go long without water
+nocturnal = active at night owls bats
+owl adaptations > large eyes see at night silent flight sharp talons
+hawk eagle adaptations > sharp talons beak keen eyesight
+bird beak shape > type of food it eats
+long thin beak > nectar probe flowers insects hummingbird
+short thick strong beak > crack seeds nuts finch
+hooked beak > tear meat hawk eagle
+flat wide beak > strain water ducks
+webbed feet > swimming ducks frogs
+sharp teeth > carnivores tear meat
+flat teeth > herbivores grind plants
+long neck giraffe > reach leaves tall trees
+porcupine quills > protection
+skunk spray > defense
+turtle shell > protection
+fish gills > obtain oxygen from water
+gills = take oxygen from water
+streamlined body > swim fast
+duck oily feathers > waterproof
+animals in cold climates > small ears thick fur fat layer
+animals in hot climates > large ears thin fur
+cactus spines > protection reduce water loss
+plants seeds wings > wind dispersal
+natural selection = organisms best adapted survive reproduce pass traits
+survival of the fittest > natural selection
+evolution = change in species over long time natural selection
+charles darwin = natural selection evolution galapagos finches beaks
+variation = differences among individuals of species
+species = organisms can mate produce fertile offspring
+extinct = species no longer living dinosaurs dodo
+endangered = species few individuals left risk of extinction
+causes of extinction > habitat loss destruction hunting pollution climate change invasive species
+peppered moth = dark moths survived pollution soot trees natural selection
+antibiotic resistance bacteria > natural selection
+selective breeding = humans choose traits breed plants animals dogs crops
+genetic engineering = changing dna genes modified crops insulin
+cloning = genetically identical copy
+# --- genetics and reproduction
+heredity = passing traits from parents to offspring
+inherited traits > eye color hair color height blood type genes from parents
+acquired traits = learned or from environment scars language skills
+acquired trait > scar language riding bike learned skills haircut tattoo muscles from exercise
+dna = genetic material instructions double helix in nucleus chromosomes
+gene = section of dna codes trait
+chromosome = structure in nucleus dna genes
+human chromosomes > 46 23 pairs
+sex cells chromosomes > 23 half
+offspring receive genes > half from each parent mother father
+dominant trait = shows when one allele present capital letter
+recessive trait = shows only when two alleles present lowercase
+genotype = genes alleles tt
+phenotype = physical appearance trait
+punnett square = predicts probability offspring traits
+heterozygous = two different alleles hybrid tt
+homozygous = two same alleles purebred
+gregor mendel = father genetics pea plants
+mutation = change in dna gene
+sexual reproduction = two parents offspring genetic variation egg sperm different from parents
+asexual reproduction = one parent offspring identical clones budding binary fission
+asexual reproduction examples > budding yeast hydra binary fission bacteria runners regeneration starfish
+binary fission = bacteria splits into two
+budding = new organism grows from parent yeast hydra
+regeneration = regrow lost body parts starfish planarian lizard tail
+advantage sexual reproduction > variation diversity adapt to changes
+advantage asexual reproduction > fast one parent many offspring
+offspring identical to parent > asexual reproduction
+egg cell sperm cell > fertilization zygote
+fertilization = egg sperm join
+zygote = fertilized egg
+embryo = early stage development
+identical twins > same dna one egg splits
+# --- classification
+classification = grouping organisms by similar characteristics
+classification levels = kingdom phylum class order family genus species
+most specific level > species
+broadest level > kingdom domain
+scientific name = genus species binomial nomenclature linnaeus
+carolus linnaeus = classification system binomial nomenclature
+kingdoms = animals plants fungi protists bacteria archaea
+fungi = decomposers mushrooms mold yeast spores cannot make own food absorb food
+mushrooms get food > decomposing dead material absorb
+fungi reproduce > spores
+dichotomous key = tool identify organisms pairs choices characteristics
+organisms classified by > structures characteristics similarities dna
+# --- ecology
+ecosystem = living nonliving things interacting in an area
+biotic = living factors plants animals bacteria fungi
+abiotic = nonliving factors sunlight water temperature soil air rocks rainfall
+abiotic factors > sunlight water temperature soil air rocks climate rainfall wind minerals light
+biotic factors > plants animals fungi bacteria organisms
+population = all members of one species in an area
+community = all populations different species in an area
+habitat = place where organism lives food water shelter
+niche = role of organism in ecosystem
+food chain = transfer of energy sun producer consumer
+food chain begins > sun producer plant
+food chain energy source > sun
+arrows food chain show > direction energy flow
+food web = many connected food chains ecosystem
+producer = makes own food photosynthesis plants algae
+consumer = eats other organisms cannot make own food animals
+primary consumer = herbivore eats producers plants
+secondary consumer = eats primary consumers carnivore omnivore
+tertiary consumer = top predator
+herbivore = eats only plants
+carnivore = eats only animals meat
+omnivore = eats plants and animals
+decomposer = breaks down dead organisms wastes returns nutrients to soil bacteria fungi
+decomposers role > recycle nutrients soil break down dead material
+scavenger = eats dead animals vulture hyena
+predator = hunts kills eats other animals
+prey = animal hunted eaten by predator
+predator population increases > prey population decreases
+prey population decreases > predator population decreases starve
+prey increase > predator increase more food
+remove predator > prey population increases overpopulation then decreases food shortage
+energy pyramid = energy decreases each level only 10 percent passed on most lost heat
+most energy in food chain > producers bottom
+least energy > top predators
+energy lost each level > heat
+fewer organisms at top > less energy
+competition = organisms need same limited resources food water space mates
+limiting factors = food water space shelter predators disease
+carrying capacity = largest population environment can support
+overpopulation > competition food shortage disease
+symbiosis = close relationship between two species
+mutualism = both benefit bees flowers clownfish anemone lichen
+commensalism = one benefits other not affected barnacles whale remora shark birds nest tree
+parasitism = parasite benefits host harmed tick flea tapeworm mosquito
+parasite = lives on in host harms it ticks fleas lice tapeworms
+host = organism parasite lives on
+ecological succession = gradual change community over time
+primary succession = begins bare rock no soil lichens moss pioneer species
+secondary succession = after fire flood soil remains grasses shrubs trees
+pioneer species = first organisms lichens mosses break rocks make soil
+climax community = stable mature community forest
+forest fire after > secondary succession grasses first new growth
+biodiversity = variety of species in area
+high biodiversity > stable ecosystem rainforest coral reef
+invasive species = non native species spreads harms ecosystem no natural predators
+introduced species no predators > population grows rapidly outcompetes native species
+keystone species = big effect on ecosystem
+phytoplankton = tiny plant like producers ocean algae
+zooplankton = tiny animals ocean eat phytoplankton
+krill = small crustaceans eaten by whales
+algae bloom > fertilizer runoff nitrogen phosphorus oxygen depletion fish die
+nitrogen cycle = nitrogen moves bacteria soil plants animals atmosphere
+carbon cycle = carbon moves photosynthesis respiration decomposition combustion
+plants remove carbon dioxide > photosynthesis
+carbon returned to atmosphere > respiration burning decomposition
+water cycle living things > transpiration respiration
+# --- biomes
+desert = very little rain hot days cold nights cactus sand dry
+tundra = cold treeless permafrost frozen ground short growing season mosses lichens
+permafrost = permanently frozen ground tundra
+tropical rainforest = hot humid lots of rain most biodiversity near equator canopy
+temperate deciduous forest = four seasons trees lose leaves moderate rain
+taiga = boreal coniferous forest cold winters evergreen pine spruce
+grassland = prairie savanna grasses few trees grazing animals
+savanna = tropical grassland scattered trees africa zebras lions
+coral reef = warm shallow ocean high biodiversity coral polyps
+wetland = marsh swamp bog water saturated filter water habitat birds
+wetlands benefits > filter pollutants prevent flooding habitat
+ocean zones = intertidal neritic open ocean deep ocean
+deep ocean > no sunlight cold high pressure
+intertidal zone = shore between high low tide
+estuary = fresh salt water mix nursery young fish
+freshwater = lakes rivers ponds streams
+pond ecosystem > algae frogs fish insects ducks
