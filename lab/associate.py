@@ -39,7 +39,7 @@ def pair_address(a, b):
 
 
 class EducationalMemory:
-    def __init__(self, rules):
+    def __init__(self, rules, base_memory=None):
         self.rules=tuple(rules)
         vocabulary=set()
         docfreq=Counter()
@@ -47,11 +47,20 @@ class EducationalMemory:
             term=set(tokens(row.left)+tokens(row.right))
             vocabulary.update(term)
             docfreq.update(term)
-        self.vocab=tuple(sorted(vocabulary))
+        if base_memory is not None:
+            # The counterfactual must change only the NEW rule, not renumber
+            # every concept in the pre-existing associative memory. An added
+            # word is assigned an ID after all pre-existing vocabulary.
+            old=set(base_memory.vocab)
+            self.vocab=base_memory.vocab+tuple(sorted(vocabulary-old))
+        else:
+            self.vocab=tuple(sorted(vocabulary))
         self.ids={w:i+1 for i,w in enumerate(self.vocab)}
         n=max(1,len(self.rules))
-        self.idf={w:math.log(1+(n-docfreq[w]+.5)/(docfreq[w]+.5))
-                  for w in self.vocab}
+        self.idf={w:(
+            base_memory.idf[w] if base_memory is not None and w in base_memory.idf
+            else math.log(1+(n-docfreq[w]+.5)/(docfreq[w]+.5))
+        ) for w in self.vocab}
         self.A=defaultdict(list)
         self.P=defaultdict(list)
         self.counts=Counter()
@@ -222,7 +231,7 @@ def evaluate(question, choices, disabled=None, custom=""):
         if not extra:
             raise ValueError("追加ルールの書式が不正です。例: gravity pulls > down")
         # The custom rule is never written to original data or GitHub.
-        updated=EducationalMemory(list(memory.rules)+[extra])
+        updated=EducationalMemory(list(memory.rules)+[extra],base_memory=memory)
         changed=updated.score(q,o,disabled)
     else:
         updated=memory
@@ -240,6 +249,7 @@ def evaluate(question, choices, disabled=None, custom=""):
             "Source fact lines are verbatim. Word->concept mapping is a tiny simplified vocabulary.",
             "IDF, link compilation, hashing and scores are educational approximations, not original PyTorch weights.",
             "Original reported ARC test accuracy is NOT measured by this UI.",
+            "Existing concept IDs and IDF are frozen during a custom-row ablation to avoid unrelated score drift.",
             "Changing one rule in this app does not edit original released model weights.",
         ],
     }
