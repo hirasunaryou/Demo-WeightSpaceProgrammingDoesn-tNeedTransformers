@@ -10,6 +10,14 @@ import threading
 import traceback
 from urllib.request import urlopen
 import webbrowser
+
+# Older Windows CI consoles may use cp1252. Printing Japanese guidance
+# must not prevent an otherwise valid one-click launch.
+if sys.platform=="win32":
+    for stream in (sys.stdout,sys.stderr):
+        if hasattr(stream,"reconfigure"):
+            stream.reconfigure(encoding="utf-8",errors="replace")
+
 from lab.server import serve
 
 def main():
